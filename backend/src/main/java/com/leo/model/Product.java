@@ -1,6 +1,8 @@
 package com.leo.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -16,6 +18,7 @@ import java.math.BigDecimal;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotBlank(message = "Name is required")
@@ -39,4 +42,7 @@ public class Product {
 
     @Min(value = 0, message = "Quantity cannot be negative")
     private int quantity;
+
+    @NotBlank(message = "Image is Required")
+    private String imageUrl;
 }
